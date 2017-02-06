@@ -3,7 +3,7 @@ import urllib2
 import requests
 import pprint
 
-API_KEY="973741975a75404cb37255e57f4ec02e"
+API_KEY="" #REMOVED - TAKE FROM FILE IN SOURCE DIR
 SITE_ID_SICKLAKAJ="1550"
 SITE_ID_SICKLAUDDE="9820"
 #URL="http://api.sl.se/api2/realtimedeparturesV4.json?key=<DIN API NYCKEL>&siteid=<SITEID>&timewindow=<TIMEWINDOW>"

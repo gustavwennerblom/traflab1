@@ -24,7 +24,6 @@ class Traflab():
 
     def __init__(self):
         self.classname="GW's class test for traflab"
-        #self.API_KEY="973741975a75404cb37255e57f4ec02e"
         try:
             self.f=open("traflabkey.txt", "r")
             import json

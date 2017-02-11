@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-from Traflab import Traflab
+from traflab import Traflab
 
 app=Flask(__name__)
 #t=Traflab()
@@ -13,6 +13,7 @@ def home():
 @app.route('/test')
 def testpage():
 #    return "Test page"
+#    t=Traflab.get_trams(Traflab, Traflab.URL)
     str="Test page"
     return render_template('test.html', str=str)
 

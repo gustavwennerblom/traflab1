@@ -8,8 +8,8 @@ def home():
     str="Hello World"    
     return render_template("home.html")
    
-@app.route('/test')
-def testpage():
+@app.route('/sicklakaj')
+def sicklakaj():
     try:
         import os
         SITE_ROOT=os.path.realpath(os.path.dirname(__file__))
@@ -25,11 +25,18 @@ def testpage():
     SITE_ID_SICKLAKAJ="1550"
     url="http://api.sl.se/api2/realtimedeparturesV4.{0}?key={1}&siteid={2}&timewindow={3}".format("json", API_KEY, SITE_ID_SICKLAKAJ, "30")
     results=get_trams(url)
-       
-    return str(get_trams(url))
-   
-#    str="Test page"
-#    return render_template('test.html', str=str)
+    destinations=[]
+    for key in results.keys():
+        destinations.append(str(key))
+
+    times=[]
+    for value in results.values():
+        times.append(str(value))
+#    a=[str(u'alfa-1'), str(u'alfa-2')]
+#    b=["beta-1", "beta-2"]
+    return render_template("sicklakaj.html", destinations=destinations, times=times)
+#    return render_template("s.html", a=a, b=b)   
+
 
 def get_full_response(url):
     #Returns a dict from the JSON provided by the Trafiklab API, given a compliant REST call
@@ -55,5 +62,5 @@ def get_buses(url):
 
 #start sequence
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)
     

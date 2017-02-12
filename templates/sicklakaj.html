@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<title>Departures</title>
+</head>
+
+<body>
+	<div class="page-header">
+		<h1>Next departures from Sickla Kaj</h1>
+	</div>
+	<div class="row">
+	<div class="col-md-6">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Destination</th>
+					<th>Time</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for dest in destinations %}
+				<tr>
+				{% for time in times %}
+					<td>{{dest}}</td>
+					
+		{% endfor %}
+		<p>{{time}}</p>
+		{% endfor %}
+
+</body>

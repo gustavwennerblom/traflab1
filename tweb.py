@@ -32,11 +32,7 @@ def sicklakaj():
     times=[]
     for value in results.values():
         times.append(str(value))
-#    a=[str(u'alfa-1'), str(u'alfa-2')]
-#    b=["beta-1", "beta-2"]
     return render_template("sicklakaj.html", destinations=destinations, times=times)
-#    return render_template("s.html", a=a, b=b)   
-
 
 def get_full_response(url):
     #Returns a dict from the JSON provided by the Trafiklab API, given a compliant REST call

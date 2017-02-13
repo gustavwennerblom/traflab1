@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask
 from flask import render_template
 
@@ -25,14 +26,7 @@ def sicklakaj():
     SITE_ID_SICKLAKAJ="1550"
     url="http://api.sl.se/api2/realtimedeparturesV4.{0}?key={1}&siteid={2}&timewindow={3}".format("json", API_KEY, SITE_ID_SICKLAKAJ, "30")
     results=get_trams(url)
-    destinations=[]
-    for key in results.keys():
-        destinations.append(str(key))
-
-    times=[]
-    for value in results.values():
-        times.append(str(value))
-    return render_template("sicklakaj.html", destinations=destinations, times=times)
+    return render_template("sicklakaj.html", results=results)
 
 def get_full_response(url):
     #Returns a dict from the JSON provided by the Trafiklab API, given a compliant REST call

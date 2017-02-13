@@ -19,13 +19,9 @@
 				</tr>
 			</thead>
 			<tbody>
-			{% for dest in destinations %}
+			{% for key, value in results.iteritems() %}
 				<tr>
-				{% for time in times %}
-					<td>{{dest}}</td>
-					
-		{% endfor %}
-		<p>{{time}}</p>
-		{% endfor %}
-
+					<td>{{key}}</td>
+					<td>{{value}}</td>
+			{% endfor %}
 </body>

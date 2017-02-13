@@ -1,20 +1,22 @@
+# -*- coding: utf-8 -*-
 from flask import Flask
 from flask import render_template
 
-app=Flask(__name__)
+app = Flask(__name__)
 
 @app.route("/")
 def home():
-    str="Hello World"    
+    #str = "Hello World"
     return render_template("home.html")
    
+
 @app.route('/sicklakaj')
 def sicklakaj():
     try:
         import os
-        SITE_ROOT=os.path.realpath(os.path.dirname(__file__))
-        path=os.path.join(SITE_ROOT, "traflabkey.txt")
-        f=open(path, "r")
+        SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+        path = os.path.join(SITE_ROOT, "traflabkey.txt")
+        f = open(path, "r")
         import json
         API_KEY=json.loads(f.readline())
     except:
@@ -25,18 +27,16 @@ def sicklakaj():
     SITE_ID_SICKLAKAJ="1550"
     url="http://api.sl.se/api2/realtimedeparturesV4.{0}?key={1}&siteid={2}&timewindow={3}".format("json", API_KEY, SITE_ID_SICKLAKAJ, "30")
     results=get_trams(url)
-    destinations=[]
-    for key in results.keys():
-        destinations.append(str(key))
+    return render_template("sicklakaj.html", results=results)
 
-    times=[]
-    for value in results.values():
-        times.append(str(value))
-#    a=[str(u'alfa-1'), str(u'alfa-2')]
-#    b=["beta-1", "beta-2"]
-    return render_template("sicklakaj.html", destinations=destinations, times=times)
-#    return render_template("s.html", a=a, b=b)   
-
+    # destinations=[]
+    # for key in results.keys():
+    #     destinations.append(str(key))
+    #
+    # times=[]
+    # for value in results.values():
+    #     times.append(str(value))
+    # return render_template("sicklakaj.html", destinations=destinations, times=times)
 
 def get_full_response(url):
     #Returns a dict from the JSON provided by the Trafiklab API, given a compliant REST call
@@ -53,7 +53,7 @@ def get_trams(url):
     return trams
 
 def get_buses(url):
-    #Returns a dics of bus destinations (keys) and departure times (values, as displayed on boards)
+    #Returns a dict of bus destinations (keys) and departure times (values, as displayed on boards)
     j=get_full_response(url)
     buses=dict()
     for departure in j["ResponseData"]["Buses"]:

@@ -29,15 +29,6 @@ def sicklakaj():
     results=get_trams(url)
     return render_template("sicklakaj.html", results=results)
 
-    # destinations=[]
-    # for key in results.keys():
-    #     destinations.append(str(key))
-    #
-    # times=[]
-    # for value in results.values():
-    #     times.append(str(value))
-    # return render_template("sicklakaj.html", destinations=destinations, times=times)
-
 def get_full_response(url):
     #Returns a dict from the JSON provided by the Trafiklab API, given a compliant REST call
     import requests
